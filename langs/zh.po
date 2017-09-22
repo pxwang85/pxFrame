@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2017-09-05 15:31+0800\n"
+"PO-Revision-Date: 2017-09-05 15:31+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
+"X-Poedit-Basepath: ../js/system\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: newstr.js\n"
+
+#: newstr.js:2
+msgid "epg"
+msgstr "节目表"
+
+#: newstr.js:3
+msgid "film"
+msgstr "包月视讯"
+
+#: newstr.js:4
+msgid "movie"
+msgstr "点选视讯"
+
+#: newstr.js:5
+msgid "mail"
+msgstr "邮件讯息"
+
+#: newstr.js:6
+msgid "live"
+msgstr "线上直播"
+
+#: newstr.js:7
+msgid "setting"
+msgstr "系统设定"
+
+#: newstr.js:8
+msgid "media"
+msgstr "多媒体播放"
+
+#: newstr.js:9
+msgid "recorder"
+msgstr "录影机"

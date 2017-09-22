@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <title>pxwangTest</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <script type="text/javascript" src="js/base/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/base/template-web.js"></script>
+    <script type="text/javascript" src="js/base/vue.min.js"></script>
+    <script type="text/javascript" src="js/system/str.js"></script>
+    <script type="text/javascript" src="js/system/system.js"></script>
+    <script type="text/javascript" src="js/core/EventDispatcher.js"></script>
+    <script type="text/javascript" src="js/system/status.js"></script>
+    <script type="text/javascript" src="js/system/database.js"></script>
+    <script type="text/javascript" src="js/system/background.js"></script>
+    <script type="text/javascript" src="js/system/dvbplayer.js"></script>
+    <script type="text/javascript" src="js/system/installation.js"></script>
+    <script type="text/javascript" src="js/system/PluginAPI.js"></script>
+    <script type="text/javascript" src="js/system/Program.js"></script>
+    <script type="text/javascript" src="js/core/page.min.js"></script>
+    <script type="text/javascript" src="js/core/timer.js"></script>
+    <script type="text/javascript" src="js/core/snd.js"></script>
+    <script type="text/javascript" src="js/page/mainmenu.js"></script>
+    <script type="text/javascript" src="js/page/epg.js"></script>
+    <script type="text/javascript" src="js/page/mail.js"></script>
+    <script type="text/javascript" src="js/page/orderlist.js"></script>
+    <script type="text/javascript" src="js/page/reclist.js"></script>
+    <script type="text/javascript" src="js/page/advset.js"></script>
+    <script type="text/javascript" src="js/page/info.js"></script>
+    <script type="text/javascript" src="js/page/prosearch.js"></script>
+    <script type="text/javascript" src="js/page/player.js"></script>
+    <script type="text/javascript" src="js/page/messagebox.js"></script>
+    <script type="text/javascript" src="js/page/pincode.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+
+</head>
+
+<body>
+    <div id="p_player" class="page">
+        <div id="pbg_player" class="page_bg"></div>
+        <div id="psw_player" class="page_sw">
+            <div id="a_plc_area" class="area">
+                <div id="abg_plc_area" class="area_sw"></div>
+                <div id="asw_plc_area" class="area_sw">
+                </div>
+            </div>
+
+            <div id="a_pll_area" class="area">
+                <div id="abg_pll_area" class="area_sw"></div>
+                <div id="asw_pll_area" class="area_sw">
+                </div>
+            </div>
+            <div id="a_plv_area" class="area">
+                <div id="asw_plv_area" class="area_sw"></div>
+            </div>
+            <div id="a_pli_area" class="area">
+                <div id="asw_pli_area" class="area_sw">
+                    <div id="player_number">108</div>
+                    <div id="player_banner">
+                        <div id="player_title">
+                            <div id="player_id" class="channel_id">{{ status.channelid }}</div>
+                            <div id="player_name" class="channel_name">{{ status.channelname }}</div>
+                        </div>
+                        <div id="player_dbg">
+                            <div id="player_pevent">
+                                <div id="player_pevent_icon" v-if="status.pevent.flag===1"><img class="in_img" src="img/play_15.gif"></div>
+                                <div id="player_pevent_icon" v-if="status.pevent.flag===2"><img class="in_img" src="img/play_6.gif"></div>
+                                <div id="player_pevent_name">{{ status.pevent.name }}</div>
+                            </div>
+                            <div id="player_event_progress">
+                                <div id="player_pevent_stime">{{ status.pevent.start_time }}</div>
+                                <div id="player_pevent_etime">{{ status.pevent.end_time }}</div>
+                                <div id="player_progress_bg">
+                                    <div id="player_progress_show">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="player_fevent">
+                                <div id="player_fevent_icon" v-if="status.fevent.flag===1"><img class="in_img" src="img/play_15.gif"></div>
+                                <div id="player_fevent_icon" v-if="status.fevent.flag===2"><img class="in_img" src="img/play_6.gif"></div>
+                                <div id="player_fevent_name">{{ status.fevent.name }}</div>
+                            </div>
+                        </div>
+                        <div id="player_info">
+                            <div class="pleft_arr"></div>
+                            <div id="player_info_context">{{ status.pevent.descript }}</div>
+                        </div>
+                        <div id="player_tail">
+                            <div id="" class="info"><img class="info_pic" src="img/play_rec.gif" /></div>
+                            <div id="" class="info">录影</div>
+                            <div id="" class="info" style="margin-left:30px;"><img class="info_pic" src="img/play_order.gif" /></div>
+                            <div id="" class="info">预约录影</div>
+                            <div id="" class="info" style="margin-left:30px;"><img class="info_pic" src="img/play_info.gif" /></div>
+                            <div id="" class="info">介绍</div>
+                        </div>
+                    </div>
+                    <div id="player_notify">
+                        <div id="player_notify_title"></div>
+                        <div id="player_notify_area">
+                            <div id="player_notify_context">Error Message: 1234324324234</div>
+                        </div>
+                    </div>
+                    <div id="player_volume">
+                        <div id="player_volume_mute"></div>
+                        <div id="volume_pro" class="ps_progress">
+                            <div class="progr_bg">
+                                <div class="progr_show"></div>
+                            </div>
+                            <div class="progr_val">50</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="v_pview" class="view">
+        <div id="vbg_pview" class="view_bg">
+            <div class='bg1'></div>
+            <div class='bg2'></div>
+            <div class='bg3'></div>
+            <div class='bg4'></div>
+            <div class='bg5'></div>
+            <div class='bg6'></div>
+            <div class='bg7'></div>
+            <div class='bg8'></div>
+            <div class='bg9'></div>
+            <div class='bg10'></div>
+            <div class='bg11'></div>
+            <div class='bg12'></div>
+            <div class='bg13'></div>
+            <div class='bg14'></div>
+        </div>
+        <div id="vsw_pview" class="view_sw">
+            <div id="p_mainmenu" class="page">
+                <div id="pbg_mainmenu" class="page_bg"></div>
+                <div id="psw_mainmenu" class="page_sw">
+                    <div id="a_mu_area" class="area">
+                        <div id="asw_mu_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_mul_area" class="area">
+                        <div id="asw_mul_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_epg" class="spage">
+                <div id="pbg_epg" class="page_bg"></div>
+                <div id="psw_epg" class="page_sw">
+                    <div id="a_egv_area" class="area">
+                        <div id="asw_egv_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_egi_area" class="area">
+                        <div id="asw_egi_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_egd_area" class="area">
+                        <div id="asw_egd_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_egc_area" class="area">
+                        <div id="abg_egc_area" class="area_bg"></div>
+                        <div id="asw_egc_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_ege_area" class="area">
+                        <div id="abg_ege_area" class="area_bg"></div>
+                        <div id="asw_ege_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_egh_area" class="area">
+                        <div id="asw_egh_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_reclist" class="spage">
+                <div id="pbg_reclist" class="page_bg"></div>
+                <div id="psw_reclist" class="page_sw">
+                    <div id="a_rtl_area" class="area">
+                        <div id="asw_rtl_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_orderlist" class="spage">
+                <div id="pbg_orderlist" class="page_bg"></div>
+                <div id="psw_orderlist" class="page_sw">
+                    <div id="a_orl_area" class="area">
+                        <div id="asw_orl_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_advset" class="spage">
+                <div id="pbg_advset" class="page_bg"></div>
+                <div id="psw_advset" class="page_sw">
+                    <div id="a_atc_area" class="area">
+                        <div id="asw_atc_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atf_area" class="area">
+                        <div id="asw_atf_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atd_area" class="area">
+                        <div id="asw_atd_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atv_area" class="area">
+                        <div id="asw_atv_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atw_area" class="area">
+                        <div id="asw_atw_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atfd_area" class="area">
+                        <div id="asw_atfd_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atn_area" class="area">
+                        <div id="asw_atn_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atwf_area" class="area">
+                        <div id="asw_atwf_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atch_area" class="area">
+                        <div id="asw_atch_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_atoff_area" class="area">
+                        <div id="asw_atoff_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_info" class="spage">
+                <div id="pbg_info" class="page_bg"></div>
+                <div id="psw_info" class="page_sw">
+                    <div id="a_ioc_area" class="area">
+                        <div id="asw_ioc_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_ios_area" class="area">
+                        <div id="asw_ios_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_ioch_area" class="area">
+                        <div id="asw_ioch_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_iou_area" class="area">
+                        <div id="asw_iou_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_ioca_area" class="area">
+                        <div id="asw_ioca_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_ioud_area" class="area">
+                        <div id="asw_ioud_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_mail" class="spage">
+                <div id="pbg_mail" class="page_bg"></div>
+                <div id="psw_mail" class="page_sw">
+                    <div id="a_mll_area" class="area">
+                        <div id="abg_mll_area" class="area_bg"></div>
+                        <div id="asw_mll_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_mla_area" class="area">
+                    	<div id="abg_mla_area" class="area_bg"></div>
+                        <div id="asw_mla_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="p_prosearch" class="spage">
+                <div id="pbg_prosearch" class="page_bg"></div>
+                <div id="psw_prosearch" class="page_sw">
+                    <div id="a_psc_area" class="area">
+                        <div id="asw_psc_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_psa_area" class="area">
+                        <div id="asw_psa_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_psm_area" class="area">
+                        <div id="asw_psm_area" class="area_sw"></div>
+                    </div>
+                    <div id="a_psr_area" class="area">
+                        <div id="asw_psr_area" class="area_sw"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="p_messagebox" class="page">
+        <div id="pbg_messagebox" class="page_bg">
+            <div class='messagebox_bg'></div>
+        </div>
+        <div id="psw_messagebox" class="page_sw">
+            <div id="a_mx_area" class="area">
+                <div id="asw_mx_area" class="area_sw"></div>
+            </div>
+        </div>
+    </div>
+    <div id="p_pincode" class="page">
+        <div id="pbg_pincode" class="page_bg">
+            <div class='pincode_bg'></div>
+        </div>
+        <div id="psw_pincode" class="page_sw">
+            <div id="a_pe_area" class="area">
+                <div id="asw_pe_area" class="area_sw"></div>
+            </div>
+        </div>
+    </div>
+    <div id="debug"></div>
+</body>
+
+</html>
