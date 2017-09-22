@@ -119,7 +119,7 @@ function mTree() {
 function nofind() {
 	var img = event.srcElement;
 	img.src = "img/tanhao.jpg";
-	img.onerror = null
+	img.onerror = null;
 }
 var g_dat = null;
 
